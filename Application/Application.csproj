@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\CreditApplications\Commands\Delete\" />
+    <Folder Include="Features\CreditApplications\Commands\Update\" />
+    <Folder Include="Features\CreditApplications\Mapping\" />
+    <Folder Include="Features\CreditApplications\Queries\" />
+    <Folder Include="Features\Customers\Commands\Update\" />
+    <Folder Include="Features\Customers\Commands\Delete\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.14" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.14" />
+	<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>
