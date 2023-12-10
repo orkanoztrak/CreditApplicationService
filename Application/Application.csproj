@@ -8,10 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Features\CreditApplications\Commands\Delete\" />
-    <Folder Include="Features\CreditApplications\Commands\Update\" />
-    <Folder Include="Features\CreditApplications\Mapping\" />
-    <Folder Include="Features\CreditApplications\Queries\" />
-    <Folder Include="Features\Customers\Commands\Update\" />
     <Folder Include="Features\Customers\Commands\Delete\" />
   </ItemGroup>
 

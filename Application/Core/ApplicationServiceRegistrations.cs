@@ -22,7 +22,7 @@ public static class ApplicationServiceRegistrations
     {
         services.AddDbContext<BaseDbContext>(options => options.UseSqlite("DataSource=file::memory:?cache=shared"));
         services.AddScoped<CustomerRepository>();
-
+        services.AddScoped<CreditApplicationRepository>();
         return services;
     }
 

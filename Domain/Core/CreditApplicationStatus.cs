@@ -2,7 +2,7 @@
 
 public enum CreditApplicationStatus
 {
-    Success = 0,
-    Fail = 1,
+    Fail = 0,
+    Success = 1,
     Pending = 2
 }

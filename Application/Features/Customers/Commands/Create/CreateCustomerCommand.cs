@@ -8,5 +8,6 @@ public class CreateCustomerCommand : IRequest<CreateCustomerResponse>
     public string Surname { get; set; }
     public string Email { get; set; }
     public string IdNumber { get; set; }
-    public int Salary { get; set; }
+    public float Salary { get; set; }
+    public int CreditScore { get; set; }
 }

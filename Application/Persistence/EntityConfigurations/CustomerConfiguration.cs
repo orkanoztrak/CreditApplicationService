@@ -11,16 +11,14 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.ToTable("Customer").HasKey(b => b.Id);
 
         builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("Name").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("Surname").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("Email").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("IdNumber").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("Salary").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("Debt");
-        builder.Property(b => b.Id).HasColumnName("CreditScore");
-        builder.Property(b => b.Id).HasColumnName("CreatedDate").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("UpdatedDate");
-        builder.Property(b => b.Id).HasColumnName("DeletedDate");
-        builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
+        builder.Property(b => b.Name).HasColumnName("Name").IsRequired();
+        builder.Property(b => b.Surname).HasColumnName("Surname").IsRequired();
+        builder.Property(b => b.Email).HasColumnName("Email").IsRequired();
+        builder.Property(b => b.IdNumber).HasColumnName("IdNumber").IsRequired();
+        builder.Property(b => b.Salary).HasColumnName("Salary").IsRequired();
+        builder.Property(b => b.Debt).HasColumnName("Debt");
+        builder.Property(b => b.CreditScore).HasColumnName("CreditScore");
+        builder.Property(b => b.CreatedDate).HasColumnName("CreatedDate").IsRequired();
+        builder.Property(b => b.UpdatedDate).HasColumnName("UpdatedDate");
     }
 }

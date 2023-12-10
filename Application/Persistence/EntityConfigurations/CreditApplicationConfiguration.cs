@@ -11,14 +11,14 @@ public class CreditApplicationConfiguration : IEntityTypeConfiguration<CreditApp
         builder.ToTable("CreditApplication").HasKey(b => b.Id);
 
         builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("Amount").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("InstallmentCount").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("StartDate").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("Interest").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("Status").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("CreatedDate").IsRequired();
-        builder.Property(b => b.Id).HasColumnName("UpdatedDate");
-        builder.Property(b => b.Id).HasColumnName("DeletedDate");
-        builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
+        builder.Property(b => b.Amount).HasColumnName("Amount").IsRequired();
+        builder.Property(b => b.InstallmentCount).HasColumnName("InstallmentCount").IsRequired();
+        builder.Property(b => b.PaidBackIn).HasColumnName("PaidBackIn").IsRequired();
+        builder.Property(b => b.Interest).HasColumnName("Interest").IsRequired();
+        builder.Property(b => b.Status).HasColumnName("Status").IsRequired();
+        builder.Property(b => b.StatusMessage).HasColumnName("StatusMessage").IsRequired();
+        builder.Property(b => b.LinkedCustomerId).HasColumnName("LinkedCustomerId").IsRequired();
+        builder.Property(b => b.CreatedDate).HasColumnName("CreatedDate").IsRequired();
+        builder.Property(b => b.UpdatedDate).HasColumnName("UpdatedDate");
     }
 }

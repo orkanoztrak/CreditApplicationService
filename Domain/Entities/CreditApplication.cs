@@ -4,17 +4,25 @@ namespace Domain.Entities;
 
 public class CreditApplication : Entity
 {
-    public int Amount { get; set; }
+    public float Amount { get; set; }
     public int InstallmentCount { get; set; }
-    public DateTime StartDate { get; set; }
-    public double Interest {  get; set; }
+    public DateTime PaidBackIn { get; set; }
+    public float Interest {  get; set; }
     public CreditApplicationStatus Status { get; set; } = CreditApplicationStatus.Pending;
+    public ApplicationStatusMessage StatusMessage { get; set; } = ApplicationStatusMessage.CreditApplicationResultPending;
+    public virtual Customer LinkedCustomer { get; set; } = null!;
+    public Guid LinkedCustomerId { get; init; }
 
-    public CreditApplication(Guid id, int amount, int installmentCount, DateTime startDate, double interest) : base(id)
+    public CreditApplication()
+    {
+        
+    }
+    public CreditApplication(Guid id, float amount, int installmentCount, DateTime paidBackIn, float interest, Guid linkedCustomerId) : base(id)
     {
         Amount = amount;
         InstallmentCount = installmentCount;
-        StartDate = startDate;
+        PaidBackIn = paidBackIn;
         Interest = interest;
+        LinkedCustomerId = linkedCustomerId;
     }
 }

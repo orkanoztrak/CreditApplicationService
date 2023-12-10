@@ -1,4 +1,6 @@
-﻿namespace Application.Features.Customers.Queries.GetList;
+﻿using Domain.Entities;
+
+namespace Application.Features.Customers.Queries.GetList;
 
 public class GetCustomerListResponse
 {
@@ -7,7 +9,9 @@ public class GetCustomerListResponse
     public string Surname { get; set; }
     public string Email { get; set; }
     public string IdNumber { get; set; }
-    public int Salary { get; set; }
-    public int Debt { get; set; }
+    public float Salary { get; set; }
+    public float Debt { get; set; }
     public int CreditScore { get; set; }
+    public List<Guid> CreditApplicationss { get; set; }
+    public DateTime CreatedDate { get; set; }
 }

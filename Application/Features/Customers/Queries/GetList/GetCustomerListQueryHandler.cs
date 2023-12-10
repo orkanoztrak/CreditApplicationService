@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.Features.Customers.Queries.GetList;
 
-public class GetCustomerListQueryHandler : IRequestHandler<GetCustomerListQuery, List<GetCustomerListResponse>>
+public class GetCustomerListQueryHandler : IRequestHandler<GetCustomerListQuery, IList<GetCustomerListResponse>>
 {
     private readonly IMapper mapper;
     private readonly CustomerRepository customerRepository;
@@ -16,14 +16,14 @@ public class GetCustomerListQueryHandler : IRequestHandler<GetCustomerListQuery,
         this.customerRepository = customerRepository;
     }
 
-    public async Task<List<GetCustomerListResponse>> Handle (GetCustomerListQuery request, CancellationToken cancellationToken)
+    public async Task<IList<GetCustomerListResponse>> Handle (GetCustomerListQuery request, CancellationToken cancellationToken)
     {
-        List<Customer>? result = await customerRepository.GetAllAsync(cancellationToken : cancellationToken);
+        IList<Customer>? result = await customerRepository.GetAllAsync(cancellationToken : cancellationToken);
         if (result is null)
         {
             throw new ArgumentNullException(nameof(result));
         }
-        List<GetCustomerListResponse> response = mapper.Map<List<GetCustomerListResponse>>(result);
+        IList<GetCustomerListResponse> response = mapper.Map<IList<GetCustomerListResponse>>(result);
         return response;
     }
 }

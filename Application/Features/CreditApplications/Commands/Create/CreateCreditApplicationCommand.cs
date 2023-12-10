@@ -1,13 +1,12 @@
-﻿using Domain.Core;
-using MediatR;
+﻿using MediatR;
 
 namespace Application.Features.CreditApplications.Commands.Create;
 
 public class CreateCreditApplicationCommand : IRequest<CreateCreditApplicationResponse>
 {
-    public int Amount { get; set; }
+    public float Amount { get; set; }
     public int InstallmentCount { get; set; }
-    public DateTime StartDate { get; set; }
+    public DateTime? PaidBackIn { get; set; }
     public double Interest { get; set; }
-    public CreditApplicationStatus Status { get; set; } = CreditApplicationStatus.Pending;
+    public Guid LinkedCustomerId { get; init; }
 }

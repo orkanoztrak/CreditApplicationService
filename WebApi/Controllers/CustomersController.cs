@@ -13,24 +13,24 @@ public class CustomersController : BaseController
     [HttpPost]
     public async Task<IActionResult> CreateCustomerAsync([FromBody] CreateCustomerCommand createCustomerCommand)
     {
-        CreateCustomerResponse response = await Mediator.Send(createCustomerCommand);
-        return Ok(response);
+        CreateCustomerResponse createCustomerResponse = await Mediator.Send(createCustomerCommand);
+        return Ok(createCustomerResponse);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetCustomerListAsync()
     {
         GetCustomerListQuery getCustomerListQuery = new ();
-        List<GetCustomerListResponse> response = await Mediator.Send(getCustomerListQuery);
-        return Ok(response);
+        IList<GetCustomerListResponse> getCustomerListResponses = await Mediator.Send(getCustomerListQuery);
+        return Ok(getCustomerListResponses);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetCustomerByIdAsync([FromRoute] Guid id)
     {
         GetCustomerByIdQuery getCustomerByIdQuery = new() { Id = id };
-        GetCustomerByIdResponse response = await Mediator.Send(getCustomerByIdQuery);
-        return Ok(response);
+        GetCustomerByIdResponse getCustomerByIdResponse = await Mediator.Send(getCustomerByIdQuery);
+        return Ok(getCustomerByIdResponse);
     }
 
 }
