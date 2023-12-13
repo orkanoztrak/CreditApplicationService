@@ -10,7 +10,7 @@ public class CreditApplication : Entity
     public float Interest {  get; set; }
     public CreditApplicationStatus Status { get; set; } = CreditApplicationStatus.Pending;
     public ApplicationStatusMessage StatusMessage { get; set; } = ApplicationStatusMessage.CreditApplicationResultPending;
-    public virtual Customer LinkedCustomer { get; set; } = null!;
+    public virtual Customer? LinkedCustomer { get; set; } = null!;
     public Guid LinkedCustomerId { get; init; }
 
     public CreditApplication()

@@ -30,7 +30,10 @@ public class CreateCreditApplicationCommandHandler : IRequestHandler <CreateCred
         CreditApplication application = mapper.Map<CreditApplication>(request);
         application.Id = Guid.NewGuid();
         await creditApplicationRepository.Attach(application);
-
+        if (application.LinkedCustomer is null)
+        {
+            throw new ArgumentNullException(nameof(application.LinkedCustomer));
+        }
         if (application.Amount > ApplicationCreationConstants.CreditAmountThreshold)
         {
             application.Status = CreditApplicationStatus.Fail;

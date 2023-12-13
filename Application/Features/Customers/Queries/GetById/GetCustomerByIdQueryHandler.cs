@@ -19,6 +19,7 @@ public class GetCustomerByIdQueryHandler : IRequestHandler<GetCustomerByIdQuery,
     public async Task<GetCustomerByIdResponse> Handle(GetCustomerByIdQuery request, CancellationToken cancellationToken)
     {
         Customer? result = await customerRepository.GetAsync(predicate: b => b.Id == request.Id, cancellationToken: cancellationToken);
+        //customerRepository.Retrieve(result);
         if (result is null)
         {
             throw new ArgumentNullException(nameof(result));

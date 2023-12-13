@@ -1,4 +1,5 @@
 ﻿using Application.Features.CreditApplications.Commands.Create;
+using Application.Features.CreditApplications.Commands.Delete;
 using Application.Features.CreditApplications.Commands.Review;
 using Application.Features.CreditApplications.Queries.GetById;
 using Application.Features.CreditApplications.Queries.GetList;
@@ -21,7 +22,7 @@ public class CreditApplicationsController : BaseController
     [HttpGet]
     public async Task<IActionResult> GetCreditApplicationListAsync()
     {
-        GetCreditApplicationListQuery getCreditApplicationListQuery = new ();
+        GetCreditApplicationListQuery getCreditApplicationListQuery = new();
         IList<GetCreditApplicationListResponse> getCreditApplicationListResponses = await Mediator.Send(getCreditApplicationListQuery);
         return Ok(getCreditApplicationListResponses);
     }
@@ -40,5 +41,13 @@ public class CreditApplicationsController : BaseController
         ReviewCreditApplicationCommand reviewCreditApplicationCommand = new() { Id = id, Approved = approved };
         ReviewCreditApplicationResponse reviewCreditApplicationResponse = await Mediator.Send(reviewCreditApplicationCommand);
         return Ok(reviewCreditApplicationResponse);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteCreditApplicationAsync([FromRoute] Guid id)
+    {
+        DeleteCreditApplicationCommand deleteCreditApplicationCommand = new() { Id = id };
+        DeleteCreditApplicationResponse deleteCreditApplicationResponse = await Mediator.Send(deleteCreditApplicationCommand);
+        return Ok(deleteCreditApplicationResponse);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Features.Customers.Commands.Create;
+using Application.Features.Customers.Commands.Delete;
 using Application.Features.Customers.Queries.GetById;
 using Application.Features.Customers.Queries.GetList;
 using Microsoft.AspNetCore.Mvc;
@@ -33,4 +34,11 @@ public class CustomersController : BaseController
         return Ok(getCustomerByIdResponse);
     }
 
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteCustomerAsync([FromRoute] Guid id)
+    {
+        DeleteCustomerCommand deleteCustomerCommand = new DeleteCustomerCommand() { Id = id };
+        DeleteCustomerResponse deleteCustomerResponse = await Mediator.Send(deleteCustomerCommand);
+        return Ok(deleteCustomerResponse);
+    }
 }

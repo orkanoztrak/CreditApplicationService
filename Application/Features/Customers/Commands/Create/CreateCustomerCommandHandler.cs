@@ -1,7 +1,6 @@
 ﻿using Application.Persistence.Repositories;
 using AutoMapper;
 using Domain.Entities;
-using FluentValidation;
 using MediatR;
 namespace Application.Features.Customers.Commands.Create;
 
