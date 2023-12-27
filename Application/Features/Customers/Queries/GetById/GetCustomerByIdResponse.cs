@@ -12,6 +12,5 @@ public class GetCustomerByIdResponse
     public float Salary { get; set; }
     public float Debt { get; set; }
     public int CreditScore { get; set; }
-    //public ICollection<CreditApplication> CreditApplications { get; set; }
     public DateTime CreatedDate { get; set; }
 }

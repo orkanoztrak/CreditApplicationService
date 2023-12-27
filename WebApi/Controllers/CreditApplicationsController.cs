@@ -2,6 +2,7 @@
 using Application.Features.CreditApplications.Commands.Delete;
 using Application.Features.CreditApplications.Commands.Review;
 using Application.Features.CreditApplications.Queries.GetById;
+using Application.Features.CreditApplications.Queries.GetLinkedCustomer;
 using Application.Features.CreditApplications.Queries.GetList;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Core;
@@ -12,14 +13,14 @@ namespace WebApi.Controllers;
 [ApiController]
 public class CreditApplicationsController : BaseController
 {
-    [HttpPost]
+    [HttpPost("CreateCreditApplicationAsync")]
     public async Task<IActionResult> CreateCreditApplicationAsync([FromBody] CreateCreditApplicationCommand createCreditApplicationCommand)
     {
         CreateCreditApplicationResponse createCreditApplicationResponse = await Mediator.Send(createCreditApplicationCommand);
         return Ok(createCreditApplicationResponse);
     }
 
-    [HttpGet]
+    [HttpGet("GetCreditApplicationListAsync")]
     public async Task<IActionResult> GetCreditApplicationListAsync()
     {
         GetCreditApplicationListQuery getCreditApplicationListQuery = new();
@@ -27,15 +28,23 @@ public class CreditApplicationsController : BaseController
         return Ok(getCreditApplicationListResponses);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetCreditApplicationById([FromRoute] Guid id)
+    [HttpGet("GetCreditApplicationById")]
+    public async Task<IActionResult> GetCreditApplicationById([FromQuery] Guid id)
     {
         GetCreditApplicationByIdQuery getCreditApplicationByIdQuery = new() { Id = id };
         GetCreditApplicationByIdResponse getCreditApplicationByIdResponse = await Mediator.Send(getCreditApplicationByIdQuery);
         return Ok(getCreditApplicationByIdResponse);
     }
 
-    [HttpPut]
+    [HttpGet("GetLinkedCustomer")]
+    public async Task<IActionResult> GetLinkedCustomer([FromQuery] Guid id)
+    {
+        GetLinkedCustomerQuery getLinkedCustomerQuery = new() { Id = id };
+        GetLinkedCustomerResponse getLinkedCustomerResponse = await Mediator.Send(getLinkedCustomerQuery);
+        return Ok(getLinkedCustomerResponse);
+    }
+
+    [HttpPut("ApproveCreditApplication")]
     public async Task<IActionResult> ApproveCreditApplication([FromBody] Guid id, bool approved)
     {
         ReviewCreditApplicationCommand reviewCreditApplicationCommand = new() { Id = id, Approved = approved };
@@ -43,8 +52,8 @@ public class CreditApplicationsController : BaseController
         return Ok(reviewCreditApplicationResponse);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteCreditApplicationAsync([FromRoute] Guid id)
+    [HttpDelete("DeleteCreditApplicationAsync")]
+    public async Task<IActionResult> DeleteCreditApplicationAsync([FromQuery] Guid id)
     {
         DeleteCreditApplicationCommand deleteCreditApplicationCommand = new() { Id = id };
         DeleteCreditApplicationResponse deleteCreditApplicationResponse = await Mediator.Send(deleteCreditApplicationCommand);

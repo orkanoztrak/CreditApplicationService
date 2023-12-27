@@ -8,9 +8,4 @@ public class CustomerRepository : RepositoryBase <Customer, BaseDbContext>
     {
         
     }
-
-    /*public void Retrieve(Customer entity)
-    {
-        Context.Entry(entity).Collection(b => b.CreditApplications).Load();
-    }*/
 }

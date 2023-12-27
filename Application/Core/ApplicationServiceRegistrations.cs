@@ -20,7 +20,7 @@ public static class ApplicationServiceRegistrations
 
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
     {
-        services.AddDbContext<BaseDbContext>(options => options.UseSqlite("DataSource=file::memory:?cache=shared"));
+        services.AddDbContext<BaseDbContext>(options => options.UseLazyLoadingProxies().UseSqlite("DataSource=file::memory:?cache=shared"));
         services.AddScoped<CustomerRepository>();
         services.AddScoped<CreditApplicationRepository>();
         return services;

@@ -1,5 +1,6 @@
 ﻿using Application.Features.Customers.Commands.Create;
 using Application.Features.Customers.Queries.GetById;
+using Application.Features.Customers.Queries.GetCreditApplicationsForCustomer;
 using Application.Features.Customers.Queries.GetList;
 using AutoMapper;
 using Domain.Entities;
@@ -14,5 +15,6 @@ public class CustomerProfiles : Profile
         CreateMap<Customer, CreateCustomerResponse>().ReverseMap();
         CreateMap<Customer, GetCustomerListResponse>().ReverseMap();
         CreateMap<Customer, GetCustomerByIdResponse>().ReverseMap();
+        CreateMap<CreditApplication, GetCreditApplicationsForCustomerResponse>().ReverseMap();
     }
 }

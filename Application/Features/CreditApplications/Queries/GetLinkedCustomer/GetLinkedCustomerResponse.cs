@@ -1,8 +1,12 @@
-﻿using Domain.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Application.Features.Customers.Queries.GetList;
+namespace Application.Features.CreditApplications.Queries.GetLinkedCustomer;
 
-public class GetCustomerListResponse
+public class GetLinkedCustomerResponse
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
@@ -13,4 +17,5 @@ public class GetCustomerListResponse
     public float Debt { get; set; }
     public int CreditScore { get; set; }
     public DateTime CreatedDate { get; set; }
+
 }

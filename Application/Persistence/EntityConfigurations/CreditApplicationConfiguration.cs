@@ -20,5 +20,7 @@ public class CreditApplicationConfiguration : IEntityTypeConfiguration<CreditApp
         builder.Property(b => b.LinkedCustomerId).HasColumnName("LinkedCustomerId").IsRequired();
         builder.Property(b => b.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(b => b.UpdatedDate).HasColumnName("UpdatedDate");
+
+        builder.HasOne(b => b.LinkedCustomer).WithMany(b => b.CreditApplications).OnDelete(DeleteBehavior.SetNull);
     }
 }

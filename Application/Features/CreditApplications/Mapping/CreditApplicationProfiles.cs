@@ -1,5 +1,6 @@
 ﻿using Application.Features.CreditApplications.Commands.Create;
 using Application.Features.CreditApplications.Queries.GetById;
+using Application.Features.CreditApplications.Queries.GetLinkedCustomer;
 using Application.Features.CreditApplications.Queries.GetList;
 using AutoMapper;
 using Domain.Entities;
@@ -14,5 +15,6 @@ public class CreditApplicationProfiles : Profile
         CreateMap<CreditApplication, CreateCreditApplicationResponse>().ReverseMap();
         CreateMap<CreditApplication, GetCreditApplicationListResponse>().ReverseMap();
         CreateMap<CreditApplication, GetCreditApplicationByIdResponse>().ReverseMap();
+        CreateMap<Customer, GetLinkedCustomerResponse>().ReverseMap();
     }
 }

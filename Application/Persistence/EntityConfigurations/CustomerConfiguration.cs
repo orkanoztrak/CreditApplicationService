@@ -17,8 +17,10 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.Property(b => b.IdNumber).HasColumnName("IdNumber").IsRequired();
         builder.Property(b => b.Salary).HasColumnName("Salary").IsRequired();
         builder.Property(b => b.Debt).HasColumnName("Debt");
-        builder.Property(b => b.CreditScore).HasColumnName("CreditScore");
+        builder.Property(b => b.CreditScore).HasColumnName("CreditScore").IsRequired();
         builder.Property(b => b.CreatedDate).HasColumnName("CreatedDate").IsRequired();
         builder.Property(b => b.UpdatedDate).HasColumnName("UpdatedDate");
+
+        builder.HasMany(b => b.CreditApplications).WithOne(b => b.LinkedCustomer);
     }
 }

@@ -19,10 +19,6 @@ public class GetCustomerListQueryHandler : IRequestHandler<GetCustomerListQuery,
     public async Task<IList<GetCustomerListResponse>> Handle (GetCustomerListQuery request, CancellationToken cancellationToken)
     {
         IList<Customer>? result = await customerRepository.GetAllAsync(cancellationToken : cancellationToken);
-        /*foreach (Customer customer in result)
-        {
-            customerRepository.Retrieve(customer);
-        }*/
         if (result is null)
         {
             throw new ArgumentNullException(nameof(result));

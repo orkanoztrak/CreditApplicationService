@@ -23,7 +23,7 @@ public class GetCreditApplicationByIdQueryHandler : IRequestHandler<GetCreditApp
         {
             throw new ArgumentNullException(nameof(result));
         }
-        GetCreditApplicationByIdResponse getCreditApplicationByIdResponse = mapper.Map<GetCreditApplicationByIdResponse>(result);
-        return getCreditApplicationByIdResponse;
+        GetCreditApplicationByIdResponse response = mapper.Map<GetCreditApplicationByIdResponse>(result);
+        return response;
     }
 }

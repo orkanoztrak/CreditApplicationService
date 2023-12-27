@@ -1,6 +1,7 @@
 ﻿using Application.Features.Customers.Commands.Create;
 using Application.Features.Customers.Commands.Delete;
 using Application.Features.Customers.Queries.GetById;
+using Application.Features.Customers.Queries.GetCreditApplicationsForCustomer;
 using Application.Features.Customers.Queries.GetList;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Core;
@@ -11,14 +12,14 @@ namespace WebApi.Controllers;
 [ApiController]
 public class CustomersController : BaseController
 {
-    [HttpPost]
+    [HttpPost("CreateCustomerAsync")]
     public async Task<IActionResult> CreateCustomerAsync([FromBody] CreateCustomerCommand createCustomerCommand)
     {
         CreateCustomerResponse createCustomerResponse = await Mediator.Send(createCustomerCommand);
         return Ok(createCustomerResponse);
     }
 
-    [HttpGet]
+    [HttpGet("GetCustomerListAsync")]
     public async Task<IActionResult> GetCustomerListAsync()
     {
         GetCustomerListQuery getCustomerListQuery = new ();
@@ -26,16 +27,23 @@ public class CustomersController : BaseController
         return Ok(getCustomerListResponses);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetCustomerByIdAsync([FromRoute] Guid id)
+    [HttpGet("GetCustomerByIdAsync")]
+    public async Task<IActionResult> GetCustomerByIdAsync([FromQuery] Guid id)
     {
         GetCustomerByIdQuery getCustomerByIdQuery = new() { Id = id };
         GetCustomerByIdResponse getCustomerByIdResponse = await Mediator.Send(getCustomerByIdQuery);
         return Ok(getCustomerByIdResponse);
     }
+    [HttpGet("CetCreditApplicationsForCustomer")]
+    public async Task<IActionResult> GetCreditApplicationsForCustomer([FromQuery] Guid id)
+    {
+        GetCreditApplicationsForCustomerQuery getCreditApplicationsForCustomerQuery = new() { Id = id };
+        ICollection<GetCreditApplicationsForCustomerResponse> getCreditApplicationsForCustomerResponses = await Mediator.Send(getCreditApplicationsForCustomerQuery);
+        return Ok(getCreditApplicationsForCustomerResponses);
+    }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteCustomerAsync([FromRoute] Guid id)
+    [HttpDelete("DeleteCustomerAsync")]
+    public async Task<IActionResult> DeleteCustomerAsync([FromQuery] Guid id)
     {
         DeleteCustomerCommand deleteCustomerCommand = new DeleteCustomerCommand() { Id = id };
         DeleteCustomerResponse deleteCustomerResponse = await Mediator.Send(deleteCustomerCommand);

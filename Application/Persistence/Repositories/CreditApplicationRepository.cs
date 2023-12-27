@@ -18,7 +18,6 @@ public class CreditApplicationRepository : RepositoryBase<CreditApplication, Bas
         Context.Entry(entity).Reference(b => b.LinkedCustomer).Load();
         return entity;
     }
-
     public void Retrieve(CreditApplication entity)
     {
         Context.Entry(entity).Reference(b => b.LinkedCustomer).Load();
